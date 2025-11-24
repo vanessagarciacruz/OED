@@ -95,37 +95,24 @@ mocha.describe('readings API', () => {
                     // Add LR14 here
 
                     // Add LR15 here
-<<<<<<< HEAD
 
 
                     
-=======
-                        const unitF = { 
-                            // u8
-                            name: 'F', 
-                            identifier: '', 
-                            unitRepresent: Unit.unitRepresentType.RAW, 
-                            secInRate: 3600, 
-                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
-                            displayable: Unit.displayableType.ALL, 
-                            preferredDisplay: false, 
-                            note: 'OED created standard unit'
-                        };
+                    const unitDataDegreesC = [unitC, unitDegrees];
 
-                        const unitDegrees = { 
-                            //u7
-                            name: 'Degrees',
-                            identifier: '',
-                            unitRepresent: Unit.unitRepresentType.RAW,
-                            secInRate: 3600,
-                            typeOfUnit: Unit.unitType.METER,
-                            suffix: '',
-                            displayable: Unit.displayableType.NONE,
-                            preferredDisplay: false,
-                            note: 'special unit'
-                            };
->>>>>>> origin/testCaseLR15
+                            const conversionDataDegreesC = [
+                                {
+                                    // c5
+                                    sourceName: 'Degrees',
+                                    destinationName: 'C',
+                                    bidirectional: false,
+                                    slope: 1,
+                                    intercept: 0,
+                                    note: 'Degrees → C'
+                                }
+                            ];
 
+                            
                     // Add LR16 here
 
                     // Add LR17 here
