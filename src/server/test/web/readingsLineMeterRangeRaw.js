@@ -98,19 +98,32 @@ mocha.describe('readings API', () => {
 
 
                     
-                    const unitDataDegreesC = [unitC, unitDegrees];
+                        const unitDataDegreesC = [unitC, unitDegrees];
 
-                            const conversionDataDegreesC = [
-                                {
-                                    // c5
-                                    sourceName: 'Degrees',
-                                    destinationName: 'C',
-                                    bidirectional: false,
-                                    slope: 1,
-                                    intercept: 0,
-                                    note: 'Degrees → C'
-                                }
-                            ];
+                                const conversionDataDegreesC = [
+                                    {
+                                        // c5
+                                        sourceName: 'Degrees',
+                                        destinationName: 'C',
+                                        bidirectional: false,
+                                        slope: 1,
+                                        intercept: 0,
+                                        note: 'Degrees → C'
+                                    }
+                                ];
+
+                        const unitDegrees = { 
+                            //u7
+                            name: 'Degrees',
+                            identifier: '',
+                            unitRepresent: Unit.unitRepresentType.RAW,
+                            secInRate: 3600,
+                            typeOfUnit: Unit.unitType.METER,
+                            suffix: '',
+                            displayable: Unit.displayableType.NONE,
+                            preferredDisplay: false,
+                            note: 'special unit'
+                            };
 
                             
                     // Add LR16 here
