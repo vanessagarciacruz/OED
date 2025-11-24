@@ -95,6 +95,17 @@ mocha.describe('readings API', () => {
                     // Add LR14 here
 
                     // Add LR15 here
+                        const unitF { 
+                            // u8
+                            name: 'F', 
+                            identifier: '', 
+                            unitRepresent: Unit.unitRepresentType.RAW, 
+                            secInRate: 3600, 
+                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
+                            displayable: Unit.displayableType.ALL, 
+                            preferredDisplay: false, 
+                            note: 'OED created standard unit'
+                        }
 
                     // Add LR16 here
 
