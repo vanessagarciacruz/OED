@@ -100,17 +100,17 @@ mocha.describe('readings API', () => {
                     
                         const unitDataDegreesC = [unitC, unitDegrees];
 
-                                const conversionDataDegreesC = [
-                                    {
-                                        // c5
-                                        sourceName: 'Degrees',
-                                        destinationName: 'C',
-                                        bidirectional: false,
-                                        slope: 1,
-                                        intercept: 0,
-                                        note: 'Degrees → C'
-                                    }
-                                ];
+                        const conversionDataDegreesC = [
+                            {
+                                // c5
+                                sourceName: 'Degrees',
+                                destinationName: 'C',
+                                bidirectional: false,
+                                slope: 1,
+                                intercept: 0,
+                                note: 'Degrees → C'
+                            }
+                        ];
 
                         const conversionDataFC = [
                             {
@@ -135,8 +135,20 @@ mocha.describe('readings API', () => {
                             displayable: Unit.displayableType.NONE,
                             preferredDisplay: false,
                             note: 'special unit'
-                            };
+                        };
 
+                        const unitF { 
+                            // u8
+                            name: 'F', 
+                            identifier: '', 
+                            unitRepresent: Unit.unitRepresentType.RAW, 
+                            secInRate: 3600, 
+                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
+                            displayable: Unit.displayableType.ALL, 
+                            preferredDisplay: false, 
+                            note: 'OED created standard unit'
+                        };
+                              
                             
                     // Add LR16 here
 
