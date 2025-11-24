@@ -112,6 +112,18 @@ mocha.describe('readings API', () => {
                                     }
                                 ];
 
+                        const conversionDataFC = [
+                            {
+                                // c8: Fahrenheit (Source) -> Celsius (Destination)
+                                sourceName: 'F',
+                                destinationName: 'C',
+                                bidirectional: true, 
+                                slope: 1 / 1.8, 
+                                intercept: -32 / 1.8, 
+                                note: 'Fahrenheit → Celsius'
+                            }
+                        ];
+
                         const unitDegrees = { 
                             //u7
                             name: 'Degrees',
