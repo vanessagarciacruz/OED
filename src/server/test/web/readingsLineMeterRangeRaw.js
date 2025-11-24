@@ -95,9 +95,36 @@ mocha.describe('readings API', () => {
                     // Add LR14 here
 
                     // Add LR15 here
+<<<<<<< HEAD
 
 
                     
+=======
+                        const unitF = { 
+                            // u8
+                            name: 'F', 
+                            identifier: '', 
+                            unitRepresent: Unit.unitRepresentType.RAW, 
+                            secInRate: 3600, 
+                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
+                            displayable: Unit.displayableType.ALL, 
+                            preferredDisplay: false, 
+                            note: 'OED created standard unit'
+                        };
+
+                        const unitDegrees = { 
+                            //u7
+                            name: 'Degrees',
+                            identifier: '',
+                            unitRepresent: Unit.unitRepresentType.RAW,
+                            secInRate: 3600,
+                            typeOfUnit: Unit.unitType.METER,
+                            suffix: '',
+                            displayable: Unit.displayableType.NONE,
+                            preferredDisplay: false,
+                            note: 'special unit'
+                            };
+>>>>>>> origin/testCaseLR15
 
                     // Add LR16 here
 
