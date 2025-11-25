@@ -149,7 +149,18 @@ mocha.describe('readings API', () => {
                             note: 'OED created standard unit'
                         };
                               
-                            
+                        const unitC = {
+                            // u6
+                            name: 'C',
+                            identifier: '',
+                            unitRepresent: Unit.unitRepresentType.RAW,
+                            secInRate: 3600,
+                            typeOfUnit: Unit.unitType.UNIT,
+                            suffix: '',
+                            displayable: Unit.displayableType.ALL,
+                            preferredDisplay: true,
+                            note: 'Celsius'
+                        };  
                     // Add LR16 here
 
                     // Add LR17 here
