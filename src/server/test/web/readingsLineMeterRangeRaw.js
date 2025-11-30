@@ -98,7 +98,7 @@ mocha.describe('readings API', () => {
 
                     mocha.it('LR15: range should have daily points for 15 minute reading intervals and raw units with +-inf start/end time & Celsius as Fahrenheit with intercept reverse conversion', async () => {
 
-                        const unitDataDegreesC = [unitC, unitDegrees];
+                        const unitDataCF = [unitF, unitC]; //changed from const unitDataDegreesC = [unitC, unitDegrees];
 
                         const conversionDataDegreesC = [
                             {
@@ -178,14 +178,14 @@ mocha.describe('readings API', () => {
                             }
                         ];
 
-                        await prepareTest(unitDataDegreesC, conversionDataDegreesC, meterDataDegrees);
-                        // Get the graphic unit ID for 'C'
-                        const graphicUnitIdC = await getUnitId('C');
+                        await prepareTest(unitDataCF, conversionDataDegreesC, meterDataDegrees); //changed first parameter: unitDataDegreesC to unitDataCF
+                        // Get the graphic unit ID for 'F' (changed)
+                        const graphicUnitIdF = await getUnitId('F'); //changed name from graphicUnitIdC, and changed getUnitID parameter from 'C'
 
-                        const expected = await parseExpectedCsv('src/server/test/web/readingsData/expected_line_range_ri_15_mu_kW_gu_kW_st_-inf_et_inf.csv');
+                        const expected = await parseExpectedCsv('src/server/test/web/readingsData/expected_line_range_ri_15_mu_C_gu_F_st_-inf_et_inf.csv'); //changed last directory from LR9
 
                         const res = await chai.request(app).get(`/api/unitReadings/line/meters/${METER_ID}`)
-                            .query({ timeInterval: ETERNITY.toString(), graphicUnitId: graphicUnitIdC });
+                            .query({ timeInterval: ETERNITY.toString(), graphicUnitId: graphicUnitIdF }); //changed last parameter from graphicUnitIdC
                         // Check result matches expected csv file
                         expectRangeToEqualExpected(res, expected);
                         
