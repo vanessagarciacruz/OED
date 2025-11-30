@@ -96,8 +96,8 @@ mocha.describe('readings API', () => {
 
                     // Add LR15 here
 
+                    mocha.it('LR15: range should have daily points for 15 minute reading intervals and raw units with +-inf start/end time & Celsius as Fahrenheit with intercept reverse conversion', async () => {
 
-                    
                         const unitDataDegreesC = [unitC, unitDegrees];
 
                         const conversionDataDegreesC = [
@@ -137,7 +137,7 @@ mocha.describe('readings API', () => {
                             note: 'special unit'
                         };
 
-                        const unitF { 
+                        const unitF ={ 
                             // u8
                             name: 'F', 
                             identifier: '', 
@@ -161,6 +161,36 @@ mocha.describe('readings API', () => {
                             preferredDisplay: true,
                             note: 'Celsius'
                         };  
+
+                        
+                        const meterDataDegrees = [
+                            {
+                                name: 'Temp Celsius in Fahrenheit', // changed from 'Temp Fahrenheit in Celsius'
+                                unit: 'Degrees',
+                                defaultGraphicUnit: 'F', // changed from 'C' to 'F'
+                                displayable: true,
+                                gps: undefined,
+                                note: 'special meter for raw temp data',
+                                file: 'test/web/readingsData/readings_ri_15_days_75.csv',
+                                deleteFile: false,
+                                readingFrequency: '15 minutes',
+                                id: METER_ID
+                            }
+                        ];
+
+                        await prepareTest(unitDataDegreesC, conversionDataDegreesC, meterDataDegrees);
+                        // Get the graphic unit ID for 'C'
+                        const graphicUnitIdC = await getUnitId('C');
+
+                        const expected = await parseExpectedCsv('src/server/test/web/readingsData/expected_line_range_ri_15_mu_kW_gu_kW_st_-inf_et_inf.csv');
+
+                        const res = await chai.request(app).get(`/api/unitReadings/line/meters/${METER_ID}`)
+                            .query({ timeInterval: ETERNITY.toString(), graphicUnitId: graphicUnitIdC });
+                        // Check result matches expected csv file
+                        expectRangeToEqualExpected(res, expected);
+                        
+                    });
+
                     // Add LR16 here
 
                     // Add LR17 here
