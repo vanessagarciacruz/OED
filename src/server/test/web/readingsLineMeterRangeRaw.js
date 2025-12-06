@@ -4,7 +4,7 @@
 
 /*
     This file tests the readings retrieval API for line chart raw meters.
-    See: https://github.com/OpenEnergyDashboard/DesignDocs/blob/main/testing/testing.md for information.
+    See: https://github.com/OpenEˇnergyDashboard/DesignDocs/blob/main/testing/testing.md for information.
 */
 
 const { chai, mocha, app } = require('../common');
