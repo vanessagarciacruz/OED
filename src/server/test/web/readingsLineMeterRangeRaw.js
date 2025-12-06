@@ -123,7 +123,19 @@ mocha.describe('readings API', () => {
                             note: 'Celsius'
                         };
 
-                        const unitDataCF = [unitF, unitC]; //changed from const unitDataDegreesC = [unitC, unitDegrees];
+                        const unitDegrees = { 
+                            //u7
+                            name: 'Degrees',
+                            identifier: '',
+                            unitRepresent: Unit.unitRepresentType.RAW,
+                            secInRate: 3600,
+                            typeOfUnit: Unit.unitType.METER,
+                            suffix: '',
+                            displayable: Unit.displayableType.NONE,
+                            preferredDisplay: false,
+                            note: 'special unit'
+                        };
+                        const unitDataCFD = [unitF, unitC, unitDegrees]; //changed from const unitDataDegreesC = [unitC, unitDegrees];
 
                         const conversionDataDegreesC = [
                             {
@@ -148,24 +160,16 @@ mocha.describe('readings API', () => {
                                 note: 'Fahrenheit → Celsius'
                             }
                         ];
-
-                        const unitDegrees = { 
-                            //u7
-                            name: 'Degrees',
-                            identifier: '',
-                            unitRepresent: Unit.unitRepresentType.RAW,
-                            secInRate: 3600,
-                            typeOfUnit: Unit.unitType.METER,
-                            suffix: '',
-                            displayable: Unit.displayableType.NONE,
-                            preferredDisplay: false,
-                            note: 'special unit'
-                        };
                         
+                        const conversionDataAll = [
+                            ...conversionDataDegreesC,
+                            ...conversionDataFC
+                        ];
+
                         const meterDataDegrees = [
                             {
                                 name: 'Temp Celsius in Fahrenheit', // changed from 'Temp Fahrenheit in Celsius'
-                                unit: 'C',  // changed from 'Degrees' to 'C'
+                                unit: 'Degrees',  // changed from 'Degrees' to 'C'
                                 defaultGraphicUnit: 'F', // changed from 'C' to 'F'
                                 displayable: true,
                                 gps: undefined,
@@ -177,7 +181,7 @@ mocha.describe('readings API', () => {
                             }
                         ];
 
-                        await prepareTest(unitDataCF, conversionDataFC, meterDataDegrees); //changed first parameter: unitDataDegreesC to unitDataCF
+                        await prepareTest(unitDataCFD, conversionDataAll, meterDataDegrees); //changed first parameter: unitDataDegreesC to unitDataCF
                         // Get the graphic unit ID for 'F' (changed)
                         const graphicUnitIdF = await getUnitId('F'); //changed name from graphicUnitIdC, and changed getUnitID parameter from 'C'
 
