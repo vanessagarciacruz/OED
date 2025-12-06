@@ -98,31 +98,6 @@ mocha.describe('readings API', () => {
 
                     mocha.it('LR15: range should have daily points for 15 minute reading intervals and raw units with +-inf start/end time & Celsius as Fahrenheit with intercept reverse conversion', async () => {
 
-                        const unitF ={ 
-                            // u8
-                            name: 'F', 
-                            identifier: '', 
-                            unitRepresent: Unit.unitRepresentType.RAW, 
-                            secInRate: 3600, 
-                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
-                            displayable: Unit.displayableType.ALL, 
-                            preferredDisplay: false, 
-                            note: 'OED created standard unit'
-                        };
-                              
-                        const unitC = {
-                            // u6
-                            name: 'C',
-                            identifier: '',
-                            unitRepresent: Unit.unitRepresentType.RAW,
-                            secInRate: 3600,
-                            typeOfUnit: Unit.unitType.UNIT,
-                            suffix: '',
-                            displayable: Unit.displayableType.ALL,
-                            preferredDisplay: true,
-                            note: 'Celsius'
-                        };
-
                         const unitDataCF = [unitF, unitC]; //changed from const unitDataDegreesC = [unitC, unitDegrees];
 
                         const conversionDataDegreesC = [
@@ -161,11 +136,37 @@ mocha.describe('readings API', () => {
                             preferredDisplay: false,
                             note: 'special unit'
                         };
+
+                        const unitF ={ 
+                            // u8
+                            name: 'F', 
+                            identifier: '', 
+                            unitRepresent: Unit.unitRepresentType.RAW, 
+                            secInRate: 3600, 
+                            typeOfUnit: Unit.unitType.UNIT, suffix: '', 
+                            displayable: Unit.displayableType.ALL, 
+                            preferredDisplay: false, 
+                            note: 'OED created standard unit'
+                        };
+                              
+                        const unitC = {
+                            // u6
+                            name: 'C',
+                            identifier: '',
+                            unitRepresent: Unit.unitRepresentType.RAW,
+                            secInRate: 3600,
+                            typeOfUnit: Unit.unitType.UNIT,
+                            suffix: '',
+                            displayable: Unit.displayableType.ALL,
+                            preferredDisplay: true,
+                            note: 'Celsius'
+                        };  
+
                         
                         const meterDataDegrees = [
                             {
                                 name: 'Temp Celsius in Fahrenheit', // changed from 'Temp Fahrenheit in Celsius'
-                                unit: 'C',  // changed from 'Degrees' to 'C'
+                                unit: 'Degrees',
                                 defaultGraphicUnit: 'F', // changed from 'C' to 'F'
                                 displayable: true,
                                 gps: undefined,
@@ -177,7 +178,7 @@ mocha.describe('readings API', () => {
                             }
                         ];
 
-                        await prepareTest(unitDataCF, conversionDataFC, meterDataDegrees); //changed first parameter: unitDataDegreesC to unitDataCF
+                        await prepareTest(unitDataCF, conversionDataDegreesC, meterDataDegrees); //changed first parameter: unitDataDegreesC to unitDataCF
                         // Get the graphic unit ID for 'F' (changed)
                         const graphicUnitIdF = await getUnitId('F'); //changed name from graphicUnitIdC, and changed getUnitID parameter from 'C'
 
